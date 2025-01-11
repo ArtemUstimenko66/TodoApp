@@ -30,6 +30,24 @@ namespace backend.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<CustomTask> GetTask(int id)
+        {
+            try
+            {
+                var task = _taskService.GetTaskById(id);
+                return Ok(task);
+            } 
+            catch(KeyNotFoundException ex) 
+            {
+                return NotFound(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
         [HttpPost]
         public ActionResult<CustomTask> CreateTask(CreateTaskDto taskDto)
         {

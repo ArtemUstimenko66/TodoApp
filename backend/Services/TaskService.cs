@@ -17,6 +17,13 @@ namespace backend.Services
             return _tasks;
         }
 
+        public CustomTask GetTaskById(int id)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id)
+                ?? throw new KeyNotFoundException("Task not found");
+            return task;
+        }
+
         public CustomTask CreateTask(CreateTaskDto taskDto)
         {
             if(string.IsNullOrWhiteSpace(taskDto.Title))

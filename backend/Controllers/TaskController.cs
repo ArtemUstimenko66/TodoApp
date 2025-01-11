@@ -26,7 +26,7 @@ namespace backend.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -38,9 +38,13 @@ namespace backend.Controllers
                 var task = _taskService.CreateTask(taskDto);
                 return Ok(task);
             } 
-            catch(Exception ex)
+            catch(ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -53,9 +57,17 @@ namespace backend.Controllers
                 var updatedTask = _taskService.UpdateTask(id, taskDto);
                 return Ok(updatedTask);
             } 
-            catch(Exception ex)
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch(ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -65,11 +77,15 @@ namespace backend.Controllers
             try
             {
                 var result = _taskService.DeleteTask(id);
-                return Ok();
+                return NoContent();
+            }
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
     }

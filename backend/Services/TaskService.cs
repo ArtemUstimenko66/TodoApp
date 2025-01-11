@@ -39,7 +39,8 @@ namespace backend.Services
 
          public CustomTask UpdateTask(int id, UpdateTaskDto taskDto)
          {
-            var task = _tasks.FirstOrDefault(t => t.Id == id) ?? throw new KeyNotFoundException("Task not found");
+            var task = _tasks.FirstOrDefault(t => t.Id == id) 
+                ?? throw new KeyNotFoundException("Task not found");
 
             if (string.IsNullOrWhiteSpace(taskDto.Title))
             {
@@ -55,8 +56,9 @@ namespace backend.Services
 
         public bool DeleteTask(int id)
         {
-            var task = _tasks.FirstOrDefault(t => t.Id == id);
-            return task == null ? throw new KeyNotFoundException("Task not found") : _tasks.Remove(task);
+            var task = _tasks.FirstOrDefault(t => t.Id == id)
+                ?? throw new KeyNotFoundException("Task not found");
+            return _tasks.Remove(task);
         }
     }
 }

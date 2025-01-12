@@ -24,10 +24,3 @@ Task update form
 
 Task after update  
 <img src="https://github.com/user-attachments/assets/42f77f42-0161-444b-b923-1b879b22041f" width="600" height="400"/>
-
-## Features
-
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform

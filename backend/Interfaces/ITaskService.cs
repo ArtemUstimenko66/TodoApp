@@ -1,7 +1,7 @@
 ﻿using backend.Models;
 using backend.Models.DTOs;
 
-namespace backend.Services
+namespace backend.Interfaces
 {
     public interface ITaskService
     {

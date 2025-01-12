@@ -20,7 +20,7 @@ function CreateTask() {
 
         try {
             await createTask(newTask);
-            navigate('/tasks');
+            navigate('/');
         } catch (error) {
             console.error('Error creating task', error);
         }
@@ -63,9 +63,7 @@ function CreateTask() {
                         Cancel
                     </button>
                 </div>
-
             </form>
-
         </div>
     )
 }

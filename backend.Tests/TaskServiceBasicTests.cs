@@ -1,6 +1,7 @@
 using backend.Services;
 using backend.Models;
 using backend.Models.DTOs;
+using backend.Interfaces;
 
 namespace backend.Tests
 {

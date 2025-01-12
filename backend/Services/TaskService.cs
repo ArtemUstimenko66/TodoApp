@@ -1,4 +1,5 @@
-﻿using backend.Models;
+﻿using backend.Interfaces;
+using backend.Models;
 using backend.Models.DTOs;
 namespace backend.Services
 {
@@ -26,10 +27,9 @@ namespace backend.Services
 
         public CustomTask CreateTask(CreateTaskDto taskDto)
         {
-            if(string.IsNullOrWhiteSpace(taskDto.Title))
+            if (string.IsNullOrWhiteSpace(taskDto.Title) || string.IsNullOrWhiteSpace(taskDto.Description))
             {
-                throw new ArgumentException("Title is required");
-
+                throw new ArgumentException("Both Title and Description are required");
             }
 
             var task = new CustomTask
@@ -49,9 +49,9 @@ namespace backend.Services
             var task = _tasks.FirstOrDefault(t => t.Id == id) 
                 ?? throw new KeyNotFoundException("Task not found");
 
-            if (string.IsNullOrWhiteSpace(taskDto.Title))
+            if (string.IsNullOrWhiteSpace(taskDto.Title) || string.IsNullOrWhiteSpace(taskDto.Description))
             {
-                throw new ArgumentException("Title is required");
+                throw new ArgumentException("Both Title and Description are required");
             }
 
             task.Title = taskDto.Title;

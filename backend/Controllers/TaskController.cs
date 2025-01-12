@@ -1,5 +1,5 @@
-﻿using backend.Models.DTOs;
-using backend.Services;
+﻿using backend.Interfaces;
+using backend.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using CustomTask = backend.Models.CustomTask;
 
@@ -94,7 +94,7 @@ namespace backend.Controllers
         {
             try
             {
-                var result = _taskService.DeleteTask(id);
+                _taskService.DeleteTask(id);
                 return NoContent();
             }
             catch(KeyNotFoundException ex)

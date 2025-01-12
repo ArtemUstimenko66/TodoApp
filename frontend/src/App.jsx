@@ -1,8 +1,8 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import TaskList from './components/TaskList'
-import CreateTask from './components/CreateTask'
-import UpdateTask from './components/UpdateTask';
+import TaskList from './pages/TaskList'
+import CreateTask from './pages/CreateTask'
+import UpdateTask from './pages/UpdateTask';
 
 function App() {
   return ( 

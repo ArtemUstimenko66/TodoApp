@@ -7,13 +7,11 @@ import UpdateTask from './components/UpdateTask';
 function App() {
   return ( 
     <Router>
-      <div>
         <Routes>
-          <Route path="/tasks" element={<TaskList />} />
+          <Route path="/" element={<TaskList />} />
           <Route path="/create" element={<CreateTask />} />
           <Route path="/update/:id" element={<UpdateTask />} />
         </Routes>
-      </div>
     </Router>
   )
 }
